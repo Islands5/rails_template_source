@@ -54,4 +54,9 @@ gsub_file "Dockerfile", /%app_name%/, app_name
 gsub_file "config/database.yml", /%app_name%/, app_name
 
 # redisの設定
-application "config.cache_store = :redis_store, 'redis://kvs/0/cache'"
+application(nil, env: "development") do
+ "config.cache_store = :redis_store, 'redis://kvs/0/cache'"
+end
+application(nil, env: "test") do
+ "config.cache_store = :redis_store, 'redis://kvs/0/cache'"
+end
