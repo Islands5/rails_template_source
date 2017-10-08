@@ -1,28 +1,31 @@
-# view
+# テンプレートエンジン
 gem 'slim-rails'
-gem 'sass-rails'
 
-# env
+# 環境変数
 gem 'dotenv-rails'
 
-gem 'devise'
-# gem 'authlogic'
+# 認証
+#gem 'devise'
+gem 'authlogic'
 
+# 認可
 # gem 'pundit
 
-# gem 'redis'
+# 非同期処理
 # gem 'sidekiq'
 
 gem_group :development do
-  gem 'pry-byebug'
-  gem 'pry-doc'
-  gem 'bullet'
+  gem 'pry-byebug' # binding.pry
+  gem 'pry-doc' # ドキュメント表示
+  gem 'bullet' # N+1対策
+  gem 'ruby-debug-ide' #エディタ用
+  gem 'debase' #エディタ用
 end
 
 gem_group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'rubocop', require: false
+  gem 'rubocop', require: false # コーディング規約
 end
 
 run "rm README.rdoc"
