@@ -52,3 +52,6 @@ get "#{template_repo}/config/database.yml", 'config/database.yml'
 gsub_file "docker-compose.yml", /%app_name%/, app_name
 gsub_file "Dockerfile", /%app_name%/, app_name
 gsub_file "config/database.yml", /%app_name%/, app_name
+
+# redisの設定
+application "config.cache_store = :redis_store, 'redis://kvs/0/cache'"
