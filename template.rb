@@ -24,8 +24,10 @@ gem 'redis-rails'
 # gem 'sidekiq'
 
 gem_group :development do
-  gem 'pry-byebug' # binding.pry
-  gem 'pry-doc' # ドキュメント表示
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
   gem 'bullet' # N+1対策
   gem 'ruby-debug-ide' #エディタ用
   gem 'debase' #エディタ用
