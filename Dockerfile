@@ -25,3 +25,4 @@ RUN bundle install --path vendor/bundle
 ADD . /%app_name%
 
 EXPOSE 3000
+EXPOSE 1234
