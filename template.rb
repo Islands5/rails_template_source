@@ -51,12 +51,14 @@ get "#{template_repo}/Dockerfile", 'Dockerfile'
 get "#{template_repo}/.dockerignore", '.dockerignore'
 get "#{template_repo}/config/database.yml", 'config/database.yml'
 get "#{template_repo}/.vscode/launch.json", '.vscode/launch.json'
+get "#{template_repo}/start.sh", 'start.sh'
 
 # app_nameへ変更
 gsub_file "docker-compose.yml", /%app_name%/, app_name
 gsub_file "Dockerfile", /%app_name%/, app_name
 gsub_file "config/database.yml", /%app_name%/, app_name
 gsub_file ".vscode/launch.json", /%app_name%/, app_name
+gsub_file "start.sh", /%app_name%/, app_name
 
 # redisの設定
 comment_lines "config/environments/development.rb", "config.cache_store"
