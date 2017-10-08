@@ -36,12 +36,16 @@ gem 'redis-rails'
 gem_group :development do
   gem 'pry'
   gem 'pry-rails'
-  gem 'pry-byebug'
-  gem 'pry-doc'
+  # gem 'pry-byebug' # byebugを入れるとbreakpointでエラー
+  # gem 'pry-doc' # byebugを入れるとbreakpointでエラー
   gem 'bullet' # N+1対策
   gem 'ruby-debug-ide' #エディタ用
   gem 'debase' #エディタ用
 end
+
+# byebugを入れるとbreakpointでエラー
+comment_lines "Gemfile", "gem 'byebug'"
+
 
 gem_group :development, :test do
   gem 'rspec-rails'
@@ -75,6 +79,7 @@ gsub_file "shell_scripts/start.sh", /%app_name%/, app_name
 # redisの設定
 comment_lines "config/environments/development.rb", "config.cache_store"
 comment_lines "config/environments/test.rb", "config.cache_store"
+
 
 application(nil, env: "development") do
  "config.cache_store = :redis_store, 'redis://kvs/0/cache'"
