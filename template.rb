@@ -24,3 +24,6 @@ gem_group :development, :test do
   gem 'factory_girl_rails'
   gem 'rubocop', require: false
 end
+
+run "rm README.rdoc"
+run 'bundle install --path vendor/bundle --jobs=4'
