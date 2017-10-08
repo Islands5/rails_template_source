@@ -12,7 +12,7 @@ services:
       - '3000:3000'
       - '1234:1234'
     environment:
-      - POSTGRES_PASSWORD: example
+      POSTGRES_PASSWORD: example
     depends_on:
       - db
       - redis
@@ -20,8 +20,8 @@ services:
   db:
     image: postgres:10
     environment:
-      - POSTGRES_PASSWORD: example
-      - POSTGRES_DB: "%app_name%_development"
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: "%app_name%_development"
   redis:
     image: redis:4
 
