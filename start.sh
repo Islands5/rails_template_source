@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 rm -f /%app_name/tmp/pids/server.pid
 
