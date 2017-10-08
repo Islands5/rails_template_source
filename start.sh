@@ -1,5 +1,6 @@
 #!/bin/sh
 
+bundle install --path vendor/bundler
 rm -f /%app_name/tmp/pids/server.pid
 
 if [ "$DEBUG_MODE" = "1" ] ; then

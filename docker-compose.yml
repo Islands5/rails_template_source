@@ -2,7 +2,7 @@ version: '3'
 services:
   rails:
     build: .
-    command: "sh -c 'start.sh'"
+    command: "sh -c './start.sh'"
     volumes:
       - .:/%app_name%
       - bundle:/%app_name%/vendor/bundle

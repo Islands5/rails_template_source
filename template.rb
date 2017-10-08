@@ -53,6 +53,8 @@ get "#{template_repo}/config/database.yml", 'config/database.yml'
 get "#{template_repo}/.vscode/launch.json", '.vscode/launch.json'
 get "#{template_repo}/start.sh", 'start.sh'
 
+run 'chmod 755 start.sh'
+
 # app_nameへ変更
 gsub_file "docker-compose.yml", /%app_name%/, app_name
 gsub_file "Dockerfile", /%app_name%/, app_name
