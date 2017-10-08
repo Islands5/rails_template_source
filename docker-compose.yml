@@ -4,6 +4,7 @@ services:
     build: .
     command: "sh -c 'start.sh'"
     volumes:
+      - .:/%app_name%
       - bundle:/%app_name%/vendor/bundle
       - data:/%app_name%/db/data
       - log:/%app_name%/log
