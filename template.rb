@@ -1,6 +1,9 @@
 # テンプレートエンジン
 gem 'slim-rails'
 
+# css_normalize
+gem 'normalize-rails'
+
 # 環境変数
 gem 'dotenv-rails'
 
