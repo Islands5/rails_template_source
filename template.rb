@@ -5,8 +5,8 @@ gem 'slim-rails'
 gem 'dotenv-rails'
 
 # 認証
-#gem 'devise'
-gem 'authlogic'
+gem 'devise'
+#gem 'authlogic'
 
 # 認可
 # gem 'pundit
