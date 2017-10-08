@@ -1,0 +1,35 @@
+version: '3'
+services:
+  rails:
+    build: .
+    command: "sh -c './shell_scripts/start.sh'"
+    volumes:
+      - .:/%app_name%
+      - bundle:/%app_name%/vendor/bundle
+      - data:/%app_name%/db/data
+      - log:/%app_name%/log
+    ports:
+      - '3000:3000'
+      - '1234:1234'
+    environment:
+      MYSQL_PASSWORD: example
+    env_file:
+      - ./.env # DEBUG_MODE: 1  # IDEのデバッグモードで動く
+    depends_on:
+      - db
+      - redis
+    tty: true
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: "%app_name%_development"
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: example
+  redis:
+    image: redis:4
+
+volumes:
+  bundle:
+  data:
+  log:

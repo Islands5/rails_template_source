@@ -1,7 +1,15 @@
 # app_nameでプロジェクトの名前にアクセスできる
 template_repo = "https://raw.githubusercontent.com/Islands5/rails_template_source/master"
-puts "####{adapter}###"
-puts "####{database_name}###"
+
+# gemファイルがあればdbのアダプタがわかる
+database_adapter = case IO.read("Gemfile") 
+                   when /^\s*gem ['"]pg['"]/
+                     "postgresql"
+                   when /^\s*gem ['"]mysql2['"]/
+                     "mysql"
+                   else
+                     "sqlite"
+                   end
 
 # テンプレートエンジン
 gem 'slim-rails'
@@ -47,10 +55,10 @@ run 'mkdir .vscode'
 run 'gibo rails >> .gitignore' # giboを入れましょう! あとgibo -uで最新のignoreに更新されます
 
 # 設定ファイルを色々取ってくる
-get "#{template_repo}/docker-compose.yml", 'docker-compose.yml'
+get "#{template_repo}/docker-compose_#{database_adapter}.yml", 'docker-compose.yml'
 get "#{template_repo}/Dockerfile", 'Dockerfile'
 get "#{template_repo}/.dockerignore", '.dockerignore'
-get "#{template_repo}/config/database.yml", 'config/database.yml'
+get "#{template_repo}/config/database_#{database_adapter}.yml", 'config/database.yml'
 get "#{template_repo}/.vscode/launch.json", '.vscode/launch.json'
 get "#{template_repo}/shell_scripts/start.sh", 'shell_scripts/start.sh'
 
