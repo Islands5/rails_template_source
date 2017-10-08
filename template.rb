@@ -1,5 +1,7 @@
 # app_nameでプロジェクトの名前にアクセスできる
 template_repo = "https://raw.githubusercontent.com/Islands5/rails_template_source/master"
+puts "####{adapter}###"
+puts "####{database_name}###"
 
 # テンプレートエンジン
 gem 'slim-rails'
