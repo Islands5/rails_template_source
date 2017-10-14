@@ -82,10 +82,10 @@ comment_lines "config/environments/test.rb", "config.cache_store"
 
 
 application(nil, env: "development") do
- "config.cache_store = :redis_store, 'redis://kvs/0/cache'"
+ "config.cache_store = :redis_store, 'redis://redis/0/cache'"
 end
 application(nil, env: "test") do
- "config.cache_store = :redis_store, 'redis://kvs/0/cache'"
+ "config.cache_store = :redis_store, 'redis://redis/0/cache'"
 end
 
 # 最後にbundle install
