@@ -68,6 +68,7 @@ get "#{template_repo}/shell_scripts/start.sh", 'shell_scripts/start.sh'
 
 run 'chmod 755 shell_scripts/start.sh'
 run 'echo "DEBUG_MODE=0" >> .env'
+run 'touch Gemfile.lock'
 
 # app_nameへ変更
 gsub_file "docker-compose.yml", /%app_name%/, app_name
