@@ -88,5 +88,5 @@ application(nil, env: "test") do
  "config.cache_store = :redis_store, 'redis://redis/0/cache'"
 end
 
-# 最後にbundle install
-run 'bundle install --path vendor/bundle --jobs=4'
+# 最後にbundle install(コンテナの中で実行するから必要ないかも)
+#run 'bundle install --path vendor/bundle --jobs=4'
