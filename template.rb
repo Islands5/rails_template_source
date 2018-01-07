@@ -25,13 +25,13 @@ gem 'devise'
 #gem 'authlogic'
 
 # 認可
-# gem 'pundit
+#gem 'pundit
 
 # middleware
 gem 'redis-rails'
 
 # 非同期処理
-# gem 'sidekiq'
+gem 'sidekiq'
 
 gem_group :development do
   gem 'pry'
@@ -49,7 +49,7 @@ comment_lines "Gemfile", "gem 'byebug'"
 
 gem_group :development, :test do
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'rubocop', require: false # コーディング規約
 end
 
@@ -65,9 +65,9 @@ get "#{template_repo}/.dockerignore", '.dockerignore'
 get "#{template_repo}/config/database_#{database_adapter}.yml", 'config/database.yml'
 get "#{template_repo}/.vscode/launch.json", '.vscode/launch.json'
 get "#{template_repo}/shell_scripts/start.sh", 'shell_scripts/start.sh'
+get "#{template_repo}/.env.development", '.env'
 
 run 'chmod 755 shell_scripts/start.sh'
-run 'echo "DEBUG_MODE=0" >> .env'
 run 'touch Gemfile.lock'
 
 # app_nameへ変更
@@ -90,4 +90,4 @@ application(nil, env: "test") do
 end
 
 # 最後にbundle install(コンテナの中で実行するから必要ないかも)
-#run 'bundle install --path vendor/bundle --jobs=4'
+#run 'bundle install --jobs=4'
