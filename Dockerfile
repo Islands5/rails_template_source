@@ -21,7 +21,7 @@ WORKDIR /%app_name%
 ADD Gemfile /%app_name%/Gemfile
 ADD Gemfile.lock /%app_name%/Gemfile.lock
 
-RUN bundle install --path vendor/bundle
+RUN bundle install --jobs=4
 ADD . /%app_name%
 
 EXPOSE 3000
