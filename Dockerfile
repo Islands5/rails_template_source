@@ -1,4 +1,4 @@
-FROM ruby:2.5
+FROM ruby:2.4
 
 ENV LANG C.UTF-8
 
@@ -8,7 +8,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         build-essential \
         libpq-dev \
-        default-libmysqlclient-dev \
+        libmysqlclient-dev \
         postgresql-client \
         nodejs \
         vim \
