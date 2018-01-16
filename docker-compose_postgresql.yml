@@ -2,7 +2,7 @@ version: '3'
 services:
   rails:
     build: .
-    command: "sh -c './shell_scripts/start.sh'"
+    command: bin/rails s -p 3000 -b '0.0.0.0' -e development
     volumes:
       - .:/%app_name%
       - data:/%app_name%/db/data
@@ -12,7 +12,7 @@ services:
       - '1234:1234'
     environment:
       POSTGRES_PASSWORD: example
-      # DEBUG_MODE: 1  # IDEのデバッグモードで動く
+      COMPOSE_HTTP_TIMEOUT=90
     env_file:
       - ./.env
     depends_on:

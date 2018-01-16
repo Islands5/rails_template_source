@@ -36,16 +36,10 @@ gem 'sidekiq'
 gem_group :development do
   gem 'pry'
   gem 'pry-rails'
-  # gem 'pry-byebug' # byebugを入れるとbreakpointでエラー
+  gem 'pry-byebug' # byebugを入れるとbreakpointでエラー
   # gem 'pry-doc' # byebugを入れるとbreakpointでエラー
   gem 'bullet' # N+1対策
-  gem 'ruby-debug-ide' #エディタ用
-  gem 'debase' #エディタ用
 end
-
-# byebugを入れるとbreakpointでエラー
-comment_lines "Gemfile", "gem 'byebug'"
-
 
 gem_group :development, :test do
   gem 'rspec-rails'
@@ -64,10 +58,8 @@ get "#{template_repo}/Dockerfile", 'Dockerfile'
 get "#{template_repo}/.dockerignore", '.dockerignore'
 get "#{template_repo}/config/database_#{database_adapter}.yml", 'config/database.yml'
 get "#{template_repo}/.vscode/launch.json", '.vscode/launch.json'
-get "#{template_repo}/shell_scripts/start.sh", 'shell_scripts/start.sh'
 get "#{template_repo}/.env.development", '.env'
 
-run 'chmod 755 shell_scripts/start.sh'
 run 'touch Gemfile.lock'
 
 # app_nameへ変更
@@ -75,7 +67,6 @@ gsub_file "docker-compose.yml", /%app_name%/, app_name
 gsub_file "Dockerfile", /%app_name%/, app_name
 gsub_file "config/database.yml", /%app_name%/, app_name
 gsub_file ".vscode/launch.json", /%app_name%/, app_name
-gsub_file "shell_scripts/start.sh", /%app_name%/, app_name
 
 # redisの設定
 comment_lines "config/environments/development.rb", "config.cache_store"

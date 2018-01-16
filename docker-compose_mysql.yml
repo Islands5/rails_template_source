@@ -2,7 +2,7 @@ version: '3'
 services:
   rails:
     build: .
-    command: "sh -c './shell_scripts/start.sh'"
+    command: bin/rails s -p 3000 -b '0.0.0.0' -e development
     volumes:
       - .:/%app_name%
       - data:/%app_name%/db/data
@@ -13,7 +13,7 @@ services:
     environment:
       MYSQL_PASSWORD: example
     env_file:
-      - ./.env # DEBUG_MODE: 1  # IDEのデバッグモードで動く
+      - ./.env
     depends_on:
       - db
       - redis
