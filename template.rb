@@ -17,6 +17,9 @@ gem 'slim-rails'
 # css_normalize
 gem 'normalize-rails'
 
+# font-awesome
+gem 'font-awesome-rails'
+
 # 環境変数
 gem 'dotenv-rails'
 
