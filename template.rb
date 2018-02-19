@@ -60,6 +60,8 @@ get "#{template_repo}/.env.development", '.env'
 if ["postgresql", "mysql"].include?(database_adapter)
   run 'rm config/database.yml'
   get "#{template_repo}/config/database_#{database_adapter}.yml", 'config/database.yml'
+else
+  get "https://github.com/mongodb/mongoid/blob/master/lib/rails/generators/mongoid/config/templates/mongoid.yml", "config/mongoid"
 end
 get "#{template_repo}/compose_files/docker-compose_#{database_adapter}.yml", 'docker-compose.yml'
 
@@ -67,7 +69,12 @@ run 'touch Gemfile.lock'
 
 # app_nameへ変更
 gsub_file "Dockerfile", /%app_name%/, app_name
-gsub_file "config/database.yml", /%app_name%/, app_name
+if ["postgresql", "mysql"].include?(database_adapter)
+  gsub_file "config/database.yml", /%app_name%/, app_name
+else
+  gsub_file "config/mongoid.yml", /\<%=\sdatabase_name.*?%\>/, app_name
+  gsub_file "config/mongoid.yml", /localhost/, "db"
+end
 gsub_file "docker-compose.yml", /%app_name%/, app_name
 
 # redisの設定

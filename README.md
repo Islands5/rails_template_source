@@ -33,3 +33,8 @@ $docker-compose run --rm --name project_name_rails_1 -p 3000:3000 rails
 ```
 
 Enjoy your rails life!!
+
+TODO
+・template fetch by rails repos
+  [https://github.com/rails/rails/blob/8dd76a7a6ff1bb7105beabb8f834ca54ab1e5fc2/railties/lib/rails/generators/rails/app/templates/config/databases/mysql.yml.tt]
+  [https://github.com/rails/rails/blob/8dd76a7a6ff1bb7105beabb8f834ca54ab1e5fc2/railties/lib/rails/generators/rails/app/templates/config/databases/postgresql.yml.tt]
