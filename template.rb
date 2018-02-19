@@ -1,5 +1,6 @@
 # app_nameでプロジェクトの名前にアクセスできる
 template_repo = "https://raw.githubusercontent.com/Islands5/rails_template_source/master"
+template_mongo = "https://raw.githubusercontent.com/mongodb/mongoid/master/lib/rails/generators/mongoid/config/templates/mongoid.yml"
 
 # gemファイルがあればdbのアダプタがわかる
 database_adapter = case IO.read("Gemfile") 
@@ -61,7 +62,7 @@ if ["postgresql", "mysql"].include?(database_adapter)
   run 'rm config/database.yml'
   get "#{template_repo}/config/database_#{database_adapter}.yml", 'config/database.yml'
 else
-  get "https://github.com/mongodb/mongoid/blob/master/lib/rails/generators/mongoid/config/templates/mongoid.yml", "config/mongoid"
+  get template_mongo, "config/mongoid"
 end
 get "#{template_repo}/compose_files/docker-compose_#{database_adapter}.yml", 'docker-compose.yml'
 
