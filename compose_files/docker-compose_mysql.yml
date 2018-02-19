@@ -2,19 +2,17 @@ version: '3'
 services:
   rails:
     build: .
-    command: bin/rails s -p 3000 -b '0.0.0.0' -e development
+    command: /bin/sh -c "rm -f /rails/tmp/pids/server.pid && bin/rails s -b '0.0.0.0' -e development"
     volumes:
-      - .:/%app_name%
-      - data:/%app_name%/db/data
-      - log:/%app_name%/log
+      - .:/rails
     ports:
       - '3000:3000'
       - '1234:1234'
     environment:
+      MYSQL_USERNAME: mysql
       MYSQL_PASSWORD: example
-    env_file:
-      - ./.env
-    depends_on:
+    env_file: .env
+    links:
       - db
       - redis
     stdin_open: true
@@ -26,12 +24,9 @@ services:
       MYSQL_DATABASE: "%app_name%_development"
       MYSQL_USER: mysql
       MYSQL_PASSWORD: example
+    stdin_open: true
     tty: true
   redis:
     image: redis:4
+    stdin_open: true
     tty: true
-
-volumes:
-  bundle:
-  data:
-  log:
