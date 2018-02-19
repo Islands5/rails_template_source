@@ -18,14 +18,18 @@ gem install rails
 rails new project_name --template=https://raw.githubusercontent.com/Islands5/rails_template_source/master/template.rb --database=postgresql --skip-coffee  --skip-test --skip-bundle
 ```
 
-3. up!
+3. build & run
 
 ```
-cd project_name
-echo "DEBUG_MODE=0" >> .env
-docker-compose up
-```
+$cd project_name
 
-above all!
+- if you use remote_debugger for using IDEs, please exec this command.
+$echo 'export ENABLE_REMOTE_DEBUG="1"' >> .env
+-
+
+
+$docker-compose build
+$docker-compose run --rm --name project_name_rails_1 -p 3000:3000 rails
+```
 
 Enjoy your rails life!!
