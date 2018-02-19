@@ -52,16 +52,17 @@ run 'gibo node >> .gitignore'
 # 設定ファイルを色々取ってくる
 get "#{template_repo}/Dockerfile", 'Dockerfile'
 get "#{template_repo}/.dockerignore", '.dockerignore'
-if ["postgresql", "mysql"].include?(database_adapter)
-  get "#{template_repo}/docker-compose_#{database_adapter}.yml", 'docker-compose.yml'
-  get "#{template_repo}/config/database_#{database_adapter}.yml", 'config/database.yml'
-end
 get "#{template_repo}/.env.development", '.env'
+
+if ["postgresql", "mysql"].include?(database_adapter)
+  get "#{template_repo}/config/database_#{database_adapter}.yml", 'config/database.yml'
+  get "#{template_repo}/docker-compose_#{database_adapter}.yml", 'docker-compose.yml'
+  gsub_file "docker-compose.yml", /%app_name%/, app_name
+end
 
 run 'touch Gemfile.lock'
 
 # app_nameへ変更
-gsub_file "docker-compose.yml", /%app_name%/, app_name
 gsub_file "Dockerfile", /%app_name%/, app_name
 gsub_file "config/database.yml", /%app_name%/, app_name
 
