@@ -50,10 +50,12 @@ run 'gibo macOS >> .gitignore'
 run 'gibo node >> .gitignore' 
 
 # 設定ファイルを色々取ってくる
-get "#{template_repo}/docker-compose_#{database_adapter}.yml", 'docker-compose.yml'
 get "#{template_repo}/Dockerfile", 'Dockerfile'
 get "#{template_repo}/.dockerignore", '.dockerignore'
-get "#{template_repo}/config/database_#{database_adapter}.yml", 'config/database.yml'
+if ["postgresql", "mysql"].include?(database_adapter)
+  get "#{template_repo}/docker-compose_#{database_adapter}.yml", 'docker-compose.yml'
+  get "#{template_repo}/config/database_#{database_adapter}.yml", 'config/database.yml'
+end
 get "#{template_repo}/.env.development", '.env'
 
 run 'touch Gemfile.lock'
