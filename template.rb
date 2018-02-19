@@ -62,7 +62,7 @@ if ["postgresql", "mysql"].include?(database_adapter)
   run 'rm config/database.yml'
   get "#{template_repo}/config/database_#{database_adapter}.yml", 'config/database.yml'
 else
-  get template_mongo, "config/mongoid"
+  get template_mongo, "config/mongoid.yml"
 end
 get "#{template_repo}/compose_files/docker-compose_#{database_adapter}.yml", 'docker-compose.yml'
 
