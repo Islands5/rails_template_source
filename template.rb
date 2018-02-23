@@ -65,6 +65,8 @@ else
   get template_mongo, "config/mongoid.yml"
 end
 get "#{template_repo}/compose_files/docker-compose_#{database_adapter}.yml", 'docker-compose.yml'
+get "#{template_repo}/config/initializers/debugger.rb", 'config/initializers/debugger.rb'
+get "#{template_repo}/Makefile", 'Makefile'
 
 run 'touch Gemfile.lock'
 
@@ -77,6 +79,7 @@ else
   gsub_file "config/mongoid.yml", /localhost/, "db"
 end
 gsub_file "docker-compose.yml", /%app_name%/, app_name
+gsub_file "Makefile", /%app_name%/, app_name
 
 # redisの設定
 comment_lines "config/environments/development.rb", "config.cache_store"
