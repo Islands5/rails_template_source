@@ -99,4 +99,4 @@ end
 environment("config.generators.helper = false", env: nil)
 environment("config.generators.stylesheets = false", env: nil)
 environment("config.generators.javascripts = false", env: nil)
-environment("config.generators.channel = assets: false", env: nil)
+environment("config.generators.channel = {assets: false}", env: nil)
