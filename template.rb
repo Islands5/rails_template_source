@@ -72,6 +72,7 @@ get "#{template_repo}/Makefile", 'Makefile'
 get "https://raw.githubusercontent.com/rails/webpacker/master/lib/install/config/webpacker.yml", 'config/webpacker.yml'
 
 run 'touch Gemfile.lock'
+run 'echo "> 1%" >> .browserslistrc'
 
 # app_nameへ変更
 gsub_file "Dockerfile", /%app_name%/, app_name
