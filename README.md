@@ -18,10 +18,13 @@ rails version depend on your local rails version:(
 so you install rails in your laptop.
 
 ```
-rails new project_name --template=https://raw.githubusercontent.com/Islands5/rails_template_source/master/template.rb --database=postgresql --skip-coffee  --skip-test --skip-bundle  --skip-sprockets --skip-turbolinks --webpack
+rails new project_name --template=https://raw.githubusercontent.com/Islands5/rails_template_source/master/template.rb --database=postgresql --skip-coffee  --skip-test --skip-bundle  --skip-sprockets --skip-turbolinks
 ```
 
 NOTE: if you wanna use monogdb, remove --database option
+
+NOTE2: webpack install manually after rails new is end. because this is rails design.
+https://github.com/rails/rails/pull/28929
 
 3. build & run
 
