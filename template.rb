@@ -86,9 +86,15 @@ comment_lines "config/environments/development.rb", "config.cache_store"
 comment_lines "config/environments/test.rb", "config.cache_store"
 
 
-application(nil, env: "development") do
+environment(nil, env: "development") do
  "config.cache_store = :redis_store, 'redis://redis/0/cache'"
 end
-application(nil, env: "test") do
+environment(nil, env: "test") do
  "config.cache_store = :redis_store, 'redis://redis/0/cache'"
+end
+environment do
+  "config.generators.helper = false"
+  "config.generators.stylesheets = false"
+  "config.generators.javascripts = false"
+  "config.generators.channel = assets: false"
 end
