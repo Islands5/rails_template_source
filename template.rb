@@ -39,7 +39,7 @@ gem_group :development do
   gem 'pry-byebug', require: false
   gem 'pry-doc', require: false
   gem 'ruby-debug-ide', '0.6.1.beta12',  require: false
-  gem 'debase', 'v0.2.2.beta14',  require: false
+  gem 'debase', '0.2.2.beta14',  require: false
 end
 
 gem_group :development, :test do
