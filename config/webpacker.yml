@@ -1,0 +1,5 @@
+default: &default
+  source_path: frontend
+  source_entry_path: packs
+  public_output_path: packs
+  cache_path: tmp/cache/webpacker
