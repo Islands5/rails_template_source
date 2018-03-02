@@ -92,7 +92,7 @@ end
 environment(nil, env: "test") do
  "config.cache_store = :redis_store, 'redis://redis/0/cache'"
 end
-environment(nil) do
+environment(nil, env: nil) do
   "config.generators.helper = false"
   "config.generators.stylesheets = false"
   "config.generators.javascripts = false"
