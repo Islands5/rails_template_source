@@ -39,9 +39,8 @@ $echo 'export ENABLE_REMOTE_DEBUG="1"' >> .env
 ```
 
 when running server
-if you wannna use "webpacker", The gem adds Gemfile and executing above command.
-```
 
+```
 $make server
 ```
 
@@ -64,4 +63,3 @@ TODO
   [https://github.com/rails/rails/blob/8dd76a7a6ff1bb7105beabb8f834ca54ab1e5fc2/railties/lib/rails/generators/rails/app/templates/config/databases/mysql.yml.tt]
   [https://github.com/rails/rails/blob/8dd76a7a6ff1bb7105beabb8f834ca54ab1e5fc2/railties/lib/rails/generators/rails/app/templates/config/databases/postgresql.yml.tt]
 
-My frontend setting is inspired by https://evilmartians.com/chronicles/evil-front-part-1
