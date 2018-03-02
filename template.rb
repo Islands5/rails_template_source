@@ -89,12 +89,12 @@ comment_lines "config/environments/test.rb", "config.cache_store"
 environment(nil, env: "development") do
  "config.cache_store = :redis_store, 'redis://redis/0/cache'"
 end
+
 environment(nil, env: "test") do
  "config.cache_store = :redis_store, 'redis://redis/0/cache'"
 end
-environment(nil, env: nil) do
-  "config.generators.helper = false"
-  "config.generators.stylesheets = false"
-  "config.generators.javascripts = false"
-  "config.generators.channel = assets: false"
-end
+
+environment("config.generators.helper = false", env: nil)
+environment("config.generators.stylesheets = false", env: nil)
+environment("config.generators.javascripts = false", env: nil)
+environment("config.generators.channel = assets: false", env: nil)
