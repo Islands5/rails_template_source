@@ -26,6 +26,8 @@ gem 'devise'
 gem 'redis-rails'
 # 非同期処理
 gem 'sidekiq'
+# webpack
+gem 'webpacker'
 
 if database_adapter == "mongodb"
   gem 'mongoid'
