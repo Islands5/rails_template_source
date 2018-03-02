@@ -15,7 +15,7 @@ services:
     stdin_open: true
     tty: true
   db:
-    image: mongodb:3.6
+    image: mongo:3.6
     stdin_open: true
     tty: true
   redis:
