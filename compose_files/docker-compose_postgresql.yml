@@ -2,9 +2,11 @@ version: '3'
 services:
   rails:
     build: .
-    command: /bin/sh -c "rm -f /rails/tmp/pids/server.pid && bin/rails s -b '0.0.0.0' -e development"
+    command: /bin/sh -c "rm -f /rails/tmp/pids/server.pid && (bundle check || bundle install) && bin/rails s -b '0.0.0.0' -e development"
     volumes:
       - .:/rails
+      - gems:/bundle
+      - tmp:/rails/tmp
     ports:
       - '3000:3000'
       - '1234:1234'
@@ -27,3 +29,6 @@ services:
     image: redis:4
     stdin_open: true
     tty: true
+volumes:
+  gems:
+  tmp:
