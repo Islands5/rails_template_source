@@ -69,6 +69,7 @@ end
 get "#{template_repo}/compose_files/docker-compose_#{database_adapter}.yml", 'docker-compose.yml'
 get "#{template_repo}/config/initializers/debugger.rb", 'config/initializers/debugger.rb'
 get "#{template_repo}/Makefile", 'Makefile'
+get "#{template_repo}/README.md", 'README.md'
 get "https://raw.githubusercontent.com/rails/webpacker/master/lib/install/config/webpacker.yml", 'config/webpacker.yml'
 
 run 'touch Gemfile.lock'
