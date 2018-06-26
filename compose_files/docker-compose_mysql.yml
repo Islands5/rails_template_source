@@ -9,6 +9,7 @@ services:
       - tmp:/rails/tmp
     ports:
       - '3000:3000'
+      - '3035:3035'
       - '1234:1234'
     environment:
       MYSQL_USERNAME: mysql
