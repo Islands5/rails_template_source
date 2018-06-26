@@ -14,7 +14,7 @@ services:
       MYSQL_USERNAME: mysql
       MYSQL_PASSWORD: example
     env_file: .env
-    links:
+    depends_on:
       - db
       - redis
     stdin_open: true
@@ -26,12 +26,13 @@ services:
       MYSQL_DATABASE: "%app_name%_development"
       MYSQL_USER: mysql
       MYSQL_PASSWORD: example
-    stdin_open: true
+    volumes:
+      - mysql-data:/var/lib/mysql
     tty: true
   redis:
     image: redis:4
-    stdin_open: true
     tty: true
 volumes:
   gems:
+  mysql-data:
   tmp:

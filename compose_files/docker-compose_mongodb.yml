@@ -11,19 +11,20 @@ services:
       - '3000:3000'
       - '1234:1234'
     env_file: .env
-    links:
+    depends_on:
       - db
       - redis
     stdin_open: true
     tty: true
   db:
     image: mongo:3.6
-    stdin_open: true
+    volumes:
+      - "mongo-data:/var/lig/mongo"
     tty: true
   redis:
     image: redis:4
-    stdin_open: true
     tty: true
 volumes:
   gems:
+  mongo-data:
   tmp:

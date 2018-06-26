@@ -13,7 +13,7 @@ services:
     environment:
       POSTGRES_PASSWORD: example
     env_file: .env
-    links:
+    depends_on:
       - db
       - redis
     stdin_open: true
@@ -23,12 +23,13 @@ services:
     environment:
       POSTGRES_PASSWORD: example
       POSTGRES_DB: "%app_name%_development"
-    stdin_open: true
+    volumes:
+      - "psql-data:/var/lib/postgresql"
     tty: true
   redis:
     image: redis:4
-    stdin_open: true
     tty: true
 volumes:
   gems:
+  psql-data:
   tmp:
