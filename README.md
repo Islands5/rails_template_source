@@ -54,6 +54,9 @@ default: &default
   cache_path: tmp/cache/webpacker
 ```
 
+```
+yarn add --dev babel-eslint eslint eslint-config-airbnb-base eslint-config-prettier eslint-import-resolver-webpack eslint-plugin-import eslint-plugin-prettier prettier
+```
 
 
 ### Container control
