@@ -18,7 +18,7 @@ $ gem install rails
 ### Rails new
 
 ```
-$ rails new project_name --template=https://raw.githubusercontent.com/Islands5/rails_template_source/master/template.rb --database=postgresql -S  -J -T -B —skip-turbolinks
+$ rails new project_name --template="https://raw.githubusercontent.com/Islands5/rails_template_source/master/template.rb" --database=postgresql -S -J -T --skip-bundle —-skip-turbolinks
 
 $ cd project_name
 ```
