@@ -26,8 +26,6 @@ gem 'devise'
 gem 'redis-rails'
 # 非同期処理
 gem 'sidekiq'
-# webpack
-gem 'webpacker'
 
 if database_adapter == "mongodb"
   gem 'mongoid'
@@ -35,13 +33,10 @@ end
 
 gem_group :development do
   gem 'pry'
-  gem 'bullet' # N+1対策
-  # require: falseが必要なのはpry系とruby-debug-ideがケンカするから2018/2/19
-  gem 'pry-rails', require: false
-  gem 'pry-byebug', require: false
-  gem 'pry-doc', require: false
-  gem 'ruby-debug-ide',  require: false
-  gem 'debase',  require: false
+  gem 'bullet'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
 end
 
 gem_group :development, :test do
@@ -68,9 +63,7 @@ else
 end
 get "#{template_repo}/compose_files/docker-compose_#{database_adapter}.yml", 'docker-compose.yml'
 get "#{template_repo}/config/initializers/debugger.rb", 'config/initializers/debugger.rb'
-get "#{template_repo}/Makefile", 'Makefile'
 get "#{template_repo}/README.md", 'README.md'
-get "https://raw.githubusercontent.com/rails/webpacker/master/lib/install/config/webpacker.yml", 'config/webpacker.yml'
 
 run 'touch Gemfile.lock'
 run 'echo "> 1%" >> .browserslistrc'
@@ -84,7 +77,6 @@ else
   gsub_file "config/mongoid.yml", /localhost/, "db"
 end
 gsub_file "docker-compose.yml", /%app_name%/, app_name
-gsub_file "Makefile", /%app_name%/, app_name
 
 # redisの設定
 comment_lines "config/environments/development.rb", "config.cache_store"
