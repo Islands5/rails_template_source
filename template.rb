@@ -62,7 +62,6 @@ else
   get template_mongo, "config/mongoid.yml"
 end
 get "#{template_repo}/compose_files/docker-compose_#{database_adapter}.yml", 'docker-compose.yml'
-get "#{template_repo}/config/initializers/debugger.rb", 'config/initializers/debugger.rb'
 get "#{template_repo}/README.md", 'README.md'
 
 run 'touch Gemfile.lock'
